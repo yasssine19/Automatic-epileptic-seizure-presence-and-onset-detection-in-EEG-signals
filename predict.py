@@ -4,7 +4,6 @@
 Skript testet das vortrainierte Modell
 
 
-@author:  Maurice Rohr, Dirk Schweickard
 """
 
 
@@ -13,18 +12,13 @@ import json
 import os
 from typing import List, Tuple, Dict, Any
 from wettbewerb import get_6montages 
-
-# Pakete aus dem Vorlesungsbeispiel
 import mne
 from scipy import signal as sig
 import ruptures as rpt
-
-#New imports
 from scipy.signal import welch
 import random
 import joblib
 from scipy.stats import kurtosis
-
 
 
 bands = {
@@ -359,7 +353,6 @@ def predict_sequence(seq_data, fs, model, window_size, step_size, min_consecutiv
         seizure_detected = True
     return seizure_detected, predicted_onset
 
-###Signatur der Methode (Parameter und Anzahl return-Werte) darf nicht verändert werden
 def predict_labels(channels : List[str], data : np.ndarray, fs : float, reference_system: str, model_name : str='model.json') -> Dict[str,Any]:
     '''
     Parameters
@@ -380,9 +373,6 @@ def predict_labels(channels : List[str], data : np.ndarray, fs : float, referenc
     prediction : Dict[str,Any]
         enthält Vorhersage, ob Anfall vorhanden und wenn ja wo (Onset+Offset)
     '''
-
-#------------------------------------------------------------------------------
-# Euer Code ab hier  
 
     # Initialisiere Return (Ergebnisse)
     seizure_present = True # gibt an ob ein Anfall vorliegt
@@ -422,7 +412,7 @@ def predict_labels(channels : List[str], data : np.ndarray, fs : float, referenc
     # Postprocessing Parameters
     min_consecutive = 8
 
-    # Hier könnt ihr euer vortrainiertes Modell laden (Kann auch aus verschiedenen Dateien bestehen)
+    # Vortrainiertes Modell laden
     model = joblib.load(model_name)
 
     data = fix_channels(channels, data, expected_channels)
@@ -435,9 +425,8 @@ def predict_labels(channels : List[str], data : np.ndarray, fs : float, referenc
     except Exception as e:
         print(f"Failed on: {e}")
 
-#------------------------------------------------------------------------------  
     prediction = {"seizure_present":seizure_present,"seizure_confidence":seizure_confidence,
                    "onset":onset,"onset_confidence":onset_confidence,"offset":offset,
                    "offset_confidence":offset_confidence}
 
-    return prediction # Dictionary mit prediction - Muss unverändert bleiben!
+    return prediction
