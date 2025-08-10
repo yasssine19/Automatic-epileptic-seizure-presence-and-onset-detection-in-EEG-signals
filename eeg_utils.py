@@ -13,7 +13,6 @@ import numpy as np
 import os
 
 
-### Achtung! Diese Funktion nicht veraendern.
 def load_references(folder: str = '../training', idx: int = 0) -> Tuple[List[str], List[List[str]],
                                                           List[np.ndarray],  List[float],
                                                           List[str], List[Tuple[bool,float,float]]]:
@@ -72,7 +71,6 @@ def load_references(folder: str = '../training', idx: int = 0) -> Tuple[List[str
     print("{}\t Dateien wurden geladen.".format(len(ids)))
     return ids, channels, data, sampling_frequencies, reference_systems, eeg_labels
 
-### Achtung! Diese Klasse nicht veraendern.
 class EEGDataset:
     def __init__(self,folder:str) -> None:
         """Diese Klasse stellt einen EEG Datensatz dar.
@@ -123,14 +121,6 @@ class EEGDataset:
     def get_labels(self):
         return self._eeg_labels
     
-        
-    
-        
-
-
-
-
-### Achtung! Diese Funktion nicht veraendern.
 #predictions = {"id":id,"seizure_present":seizure_present,"seizure_confidence":seizure_confidence,
 #                   "onset":onset,"onset_confidence":onset_confidence,"offset":offset,
 #                   "offset_confidence":offset_confidence}
