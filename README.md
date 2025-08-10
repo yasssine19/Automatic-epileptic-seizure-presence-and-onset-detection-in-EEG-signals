@@ -121,8 +121,7 @@ To use this repository and test our results, follow these steps:
 
 2. **Create a Python environment** (for example [Anaconda](https://www.anaconda.com/products/distribution)):
 ```
- conda activate eeg-processing
- pip install -r requirements.txt
+ conda create -n eeg-processing python=3.10
 ``` 
 3. **Activate the environment** and install all required packages:
 ```
