@@ -129,6 +129,7 @@ To use this repository and test our results, follow these steps:
 conda activate eeg-processing
 pip install -r requirements.txt
 ```
+4. Use the ```main.py``` file in order to run the end to end pipeline, where all necessary methods are called.
 
 
 ## Licensing & Ethical Note
